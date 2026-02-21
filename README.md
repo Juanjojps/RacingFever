@@ -83,7 +83,7 @@ RacingFever/
 
 | Asset | Origen | Licencia |
 |---|---|---|
-| [Arcade Car Controller Lite](https://assetstore.unity.com/packages/tools/physics/arcade-car-controller-lite-270252) | Unity Asset Store | Gratuito |
+| [Arcade Car Controller Lite](https://assetstore.unity.com/packages/templates/systems/arcade-car-controller-lite-version-145489) | Unity Asset Store | Gratuito |
 | CartoonTracks | Unity Asset Store | Comercial |
 | SimplePixelUI | Unity Asset Store | Comercial |
 | InputSystem | Unity Package Manager | Unity Technologies |
