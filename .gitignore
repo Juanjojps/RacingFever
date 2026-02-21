@@ -1,0 +1,25 @@
+# Unity generados
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# IDE
+.vs/
+*.csproj
+*.sln
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Assets de la store (binarios grandes, no hace falta versionar)
+Assets/ACC_Lite/
+Assets/CartoonTracksPack1/
+Assets/SimplePixelUI/
+Assets/TutorialInfo/
+Assets/InputSystem_A*/
+

@@ -1,0 +1,4 @@
+repository "RacingFever/RacingFever@1375770788946@cloud"
+  path "/"
+    br "/main"
+    co "/main"
