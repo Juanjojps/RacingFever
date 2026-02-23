@@ -120,5 +120,5 @@ RacingFever/
 
 >## 🚀 Descargar
 
-➡️ [Descargar RacingFever v1.0 (Windows)](https://github.com/Juanjojps/RacingFever/releases/tag/v1.0)
+➡️ [Descargar RacingFever v1.1 (Windows)](https://github.com/Juanjojps/RacingFever/releases/tag/v1.1)
 
