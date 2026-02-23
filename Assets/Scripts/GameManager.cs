@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        panelFinal.SetActive(false);
+        // Ocultamos el panel por si acaso
+        if (panelFinal != null) panelFinal.SetActive(false);
         txtTiempo.text = "Pasa por la meta para empezar";
     }
 
@@ -33,16 +34,32 @@ public class GameManager : MonoBehaviour
     {
         if (!vueltaIniciada)
         {
+            // --- 1ª VEZ QUE PASAS (Empieza la vuelta real) ---
             vueltaIniciada = true;
             corriendo = true;
-            timerActual = 0f;
-            Debug.Log("¡Vuelta iniciada!");
+            
+            // 1. Ponemos a grabar tu coche
+            GrabadoraFantasma grabadora = FindObjectOfType<GrabadoraFantasma>();
+            if (grabadora != null) grabadora.EmpezarAGrabar();
+            
+            // 2. Le damos el "¡Ya!" al coche fantasma si existe
+            ReproductorFantasma fantasma = FindObjectOfType<ReproductorFantasma>();
+            if (fantasma != null)
+            {
+                fantasma.EmpezarReproduccion();
+            }
         }
-        else
+        else if (corriendo)
         {
+            // --- 2ª VEZ QUE PASAS (Termina la vuelta) ---
             corriendo = false;
-            Debug.Log("¡Vuelta terminada! Tiempo: " + FormatearTiempo(timerActual));
-            Invoke(nameof(MostrarFinal), 1f);
+            
+            // Guardamos la grabación de la ruta ANTES de terminar y cargar la otra escena
+            GrabadoraFantasma grabadora = FindObjectOfType<GrabadoraFantasma>();
+            if (grabadora != null) grabadora.FinalizarVuelta();
+            
+            // Pasamos a la lógica final que tú ya tenías
+            MostrarFinal();
         }
     }
 
@@ -54,7 +71,7 @@ public class GameManager : MonoBehaviour
 
         if (timerActual < mejorTiempo)
         {
-        // Nuevo récord
+            // Nuevo récord
             PlayerPrefs.SetFloat("MejorTiempo", timerActual);
             PlayerPrefs.SetInt("EsRecord", 1); // ← 1 = ganó
         }
@@ -63,9 +80,10 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("EsRecord", 0); // ← 0 = no batió el récord
         }
 
+        // Cargamos la pantalla de final de carrera
         SceneManager.LoadScene("FinCarrera");
+    
     }
-
 
     string FormatearTiempo(float tiempo)
     {
@@ -85,5 +103,4 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MenuPrincipal");
     }
 
-    
 }
